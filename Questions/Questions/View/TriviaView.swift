@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TrivialView: View {
+struct TriviaView: View {
     @EnvironmentObject var trivialManager: TriviaManager
 
     var body: some View {
@@ -18,7 +18,7 @@ struct TrivialView: View {
 
 struct TrivialView_Previews: PreviewProvider {
     static var previews: some View {
-        TrivialView()
+        TriviaView()
             .environmentObject(TriviaManager())
     }
 }

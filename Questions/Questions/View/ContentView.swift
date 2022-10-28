@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    TrivialView()
+                    TriviaView()
                         .environmentObject(trivialManager)
                 } label: {
                     MainButton(text: "Вперед!")
