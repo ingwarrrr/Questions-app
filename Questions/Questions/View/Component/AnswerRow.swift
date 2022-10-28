@@ -35,7 +35,10 @@ struct AnswerRow: View {
         .cornerRadius(10)
         .shadow(color: isSelected ? (answer.isCorrect ? .green : .red) : .white, radius: 5, x: 0.5, y: 0.5)
         .onTapGesture {
-            isSelected = true
+            if !trivialManager.answerSelected {
+                isSelected = true
+                trivialManager.selectAnswer(answer: answer)
+            }
         }
 
     }
