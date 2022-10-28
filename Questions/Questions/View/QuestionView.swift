@@ -18,27 +18,32 @@ struct QuestionView: View {
                 
                 Spacer()
                 
-                Text("1 из 10")
+                Text("\(trivialManager.index + 1) из \(trivialManager.length)")
                     .foregroundColor(Color("AccentColor"))
                     .fontWeight(.heavy)
             }
             
-            QuestionProgressBar(progress: 40)
+            QuestionProgressBar(progress: trivialManager.progress)
             
             VStack(alignment: .leading, spacing: 20) {
-                Text("Bulls are attracted to the color red")
+                Text(trivialManager.question)
                     .font(.system(size: 20))
                     .bold()
                     .foregroundColor(Color("AccentColor").opacity(0.7))
                 
-                AnswerRow(answer: Answer(text: "False", isCorrect: true))
-                    .environmentObject(trivialManager)
-                AnswerRow(answer: Answer(text: "True", isCorrect: false))
-                    .environmentObject(trivialManager)
+                ForEach(trivialManager.answerChoices, id: \.id) { answer in
+                    AnswerRow(answer: answer)
+                        .environmentObject(trivialManager)
+                }
             }
             
-            MainButton(text: "Следующий")
-            
+            Button {
+                trivialManager.goToNextQuestion()
+            } label: {
+                MainButton(text: "Следующий", background: trivialManager.answerSelected ? Color("AccentColor") : Color(hue: 1.0, saturation: 0.0, brightness: 0.9))
+            }
+            .disabled(!trivialManager.answerSelected)
+                    
             Spacer()
         }
         .padding()
