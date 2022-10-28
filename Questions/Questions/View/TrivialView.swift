@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct TrivialView: View {
+    @EnvironmentObject var trivialManager: TriviaManager
+
     var body: some View {
         QuestionView()
+            .environmentObject(trivialManager)
     }
 }
 
 struct TrivialView_Previews: PreviewProvider {
     static var previews: some View {
         TrivialView()
+            .environmentObject(TriviaManager())
     }
 }

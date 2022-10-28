@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QuestionView: View {
+    @EnvironmentObject var trivialManager: TriviaManager
+    
     var body: some View {
         VStack(spacing: 40) {
             HStack() {
@@ -30,7 +32,9 @@ struct QuestionView: View {
                     .foregroundColor(Color("AccentColor").opacity(0.7))
                 
                 AnswerRow(answer: Answer(text: "False", isCorrect: true))
+                    .environmentObject(trivialManager)
                 AnswerRow(answer: Answer(text: "True", isCorrect: false))
+                    .environmentObject(trivialManager)
             }
             
             MainButton(text: "Следующий")
@@ -48,5 +52,6 @@ struct QuestionView: View {
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
         QuestionView()
+            .environmentObject(TriviaManager())
     }
 }
