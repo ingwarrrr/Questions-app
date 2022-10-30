@@ -28,7 +28,7 @@
       <img src="https://user-images.githubusercontent.com/64618065/198894204-e7ee36dc-6652-4ba4-b476-fa5f4ff72090.jpg" alt="drawing" width="150"/>
     </td>
     <td>
-      <img src="https://user-images.githubusercontent.com/64618065/198894245-fd00d92a-4cf3-4b95-ac06-cd6922ab3bf0.jpg alt="drawing" width="150"/>
+      <img src="https://user-images.githubusercontent.com/64618065/198894500-047442aa-b9c5-426c-8c25-ce4dfac18fc9.jpg" alt="drawing" width="150"/>
     </td>
     <td>
       <img src="https://user-images.githubusercontent.com/64618065/198894287-279863ce-3a72-4bfe-a581-1637277d8074.jpg" alt="drawing" width="150"/>
