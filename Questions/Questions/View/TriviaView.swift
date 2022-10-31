@@ -12,13 +12,26 @@ struct TriviaView: View {
 
     var body: some View {
         if trivialManager.reachedEnd {
-            VStack(spacing: 20) {
-                Text("Question Game")
-                    .lightBlueTitle()
+            VStack {
+                Spacer()
+
+                VStack(spacing: 30) {
+                    Text("Question Game")
+                        .lightBlueTitle()
+                        .padding()
+                        .background(Color(.red).opacity(0.7))
+                        .cornerRadius(20)
+                        .shadow(radius: 8)
+                    
+                    Text("Поздравляю, Вы прошли игру!")
+                        .font(.title2)
+                        .bold()
+                    
+                    Text("Вы набрали \(trivialManager.score) из \(trivialManager.length)")
+                        .font(.title2)
+                }
                 
-                Text("Поздравляю, Вы прошли игру!")
-                
-                Text("Вы набрали \(trivialManager.score) из \(trivialManager.length)")
+                Spacer()
                 
                 Button {
                     Task.init {
@@ -27,6 +40,7 @@ struct TriviaView: View {
                 } label: {
                     MainButton(text: "Новая игра")
                 }
+                .padding(30)
             }
             .foregroundColor(.accentColor)
             .padding()

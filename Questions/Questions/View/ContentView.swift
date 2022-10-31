@@ -10,28 +10,64 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var trivialManager = TriviaManager()
     
+    enum NumberOfQuestions: String, CaseIterable, Identifiable {
+        case ten = "10"
+        case fifteen = "15"
+        case twenty = "20"
+        
+        var id: String { self.rawValue }
+    }
+    
     var body: some View {
         NavigationView {
-            VStack(spacing: 40) {
-                VStack(spacing: 20) {
+            VStack() {
+                VStack(spacing: 30) {
+                    Spacer()
+                    
                     Text("Questions game")
                         .lightBlueTitle()
+                        .padding()
+                        .background(Color(.red).opacity(0.7))
+                        .cornerRadius(20)
+                        .shadow(radius: 8)
                     
                     Text("Вы готовы испытать свои знания?")
-                        .foregroundColor(Color("AccentColor"))
+                        .foregroundColor(.accentColor)
+                        .font(.title2)
+                        .bold()
+                    
+                    VStack(alignment: .leading) {
+                        Text("Количество вопросов")
+                            .foregroundColor(.accentColor)
+                            .font(.title3)
+                        Picker("Number of questions", selection: $trivialManager.amount) {
+                            ForEach(NumberOfQuestions.allCases) { number in
+                                Text(number.rawValue.capitalized).tag(number)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .foregroundColor(.accentColor)
+                    }
+                    .padding(40)
+                    
+                    Spacer()
                 }
                 
                 NavigationLink {
                     TriviaView()
+                        .task {
+                            await trivialManager.fetchTrivial()
+                        }
                         .environmentObject(trivialManager)
                 } label: {
                     MainButton(text: "Вперед!")
 
                 }
+                .padding(60)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
-        .background(Color(red: 0.5, green: 0.5, blue: 1))
+            .background(Color(red: 0.5, green: 0.5, blue: 1))
         }
     }
 }

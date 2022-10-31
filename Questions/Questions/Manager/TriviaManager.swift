@@ -18,15 +18,10 @@ class TriviaManager: ObservableObject {
     @Published private(set) var answerChoices: [Answer] = []
     @Published private(set) var progress: CGFloat = 0.00
     @Published private(set) var score = 0
-
-    init() {
-        Task.init {
-            await fetchTrivial()
-        }
-    }
+    @Published var amount = "10"
     
     func fetchTrivial() async {
-        guard let url = URL(string: "https://opentdb.com/api.php?amount=10") else { fatalError("Ошибка Url") }
+        guard let url = URL(string: "https://opentdb.com/api.php?amount=\(amount)") else { fatalError("Ошибка Url") }
         
         let urlRequest = URLRequest(url: url)
         
@@ -64,7 +59,7 @@ class TriviaManager: ObservableObject {
     
     func setQuestion() {
         answerSelected = false
-        progress = CGFloat((index + 1) / length * 350)
+        progress = CGFloat(Double(index + 1) / Double(length) * 350)
         
         if index < length {
             let currentQuestion = trivia[index]

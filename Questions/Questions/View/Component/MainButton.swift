@@ -12,13 +12,17 @@ struct MainButton: View {
     var background: Color = Color("AccentColor")
     
     var body: some View {
-        Text(text)
-            .foregroundColor(Color(red: 0.5, green: 0.5, blue: 1))
-            .padding()
-            .padding(.horizontal)
-            .background(background)
-            .cornerRadius(25)
-            .shadow(radius: 12)
+        HStack {
+            Text(text)
+                .foregroundColor(Color(red: 0.5, green: 0.5, blue: 1))
+                .font(.title2)
+                .frame(minWidth: 200)
+                .padding()
+                .padding(.horizontal)
+                .background(background)
+                .cornerRadius(20)
+                .shadow(radius: 12)
+        }
     }
 }
 

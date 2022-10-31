@@ -11,16 +11,24 @@ struct QuestionView: View {
     @EnvironmentObject var trivialManager: TriviaManager
     
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 30) {
             HStack() {
                 Text("Questions game")
                     .lightBlueTitle()
+                    .padding()
+                    .background(Color(.red).opacity(0.7))
+                    .cornerRadius(20)
+                    .shadow(radius: 8)
                 
                 Spacer()
                 
                 Text("\(trivialManager.index + 1) из \(trivialManager.length)")
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(.accentColor)
                     .fontWeight(.heavy)
+                    .padding()
+                    .background(Color(.red).opacity(0.7))
+                    .cornerRadius(20)
+                    .shadow(radius: 8)
             }
             
             QuestionProgressBar(progress: trivialManager.progress)
@@ -29,7 +37,7 @@ struct QuestionView: View {
                 Text(trivialManager.question)
                     .font(.system(size: 20))
                     .bold()
-                    .foregroundColor(Color("AccentColor").opacity(0.7))
+                    .foregroundColor(.accentColor.opacity(0.7))
                 
                 ForEach(trivialManager.answerChoices, id: \.id) { answer in
                     AnswerRow(answer: answer)
@@ -37,14 +45,15 @@ struct QuestionView: View {
                 }
             }
             
+            Spacer()
+            
             Button {
                 trivialManager.goToNextQuestion()
             } label: {
                 MainButton(text: "Следующий", background: trivialManager.answerSelected ? Color("AccentColor") : Color(hue: 1.0, saturation: 0.0, brightness: 0.9))
             }
+            .padding(40)
             .disabled(!trivialManager.answerSelected)
-                    
-            Spacer()
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
