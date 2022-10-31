@@ -14,7 +14,6 @@
   </ol>
 </details>
 
-
 ## О проекте
 
 Приложение, в котором пользователю необходимо ответить на разнообразные несвязанные друг с другом вопросы. В качестве API для полученя вопросов и вариантов ответов использовал - Trivia API. В связи с этим вопросы на английском. Много чего пока не доведено до ума, но работает <3.
@@ -22,16 +21,16 @@
 <table>
   <tr>
     <td>
-      <img src="https://user-images.githubusercontent.com/64618065/198894145-32e3b752-f015-4a40-9e78-8a5d0ff1bf84.jpg" alt="drawing" width="150"/>
+      <img src="https://user-images.githubusercontent.com/64618065/198978782-b6f6289f-7168-4b8a-ad22-68de943a6528.jpg" alt="drawing" width="150"/>
     </td>
     <td>
-      <img src="https://user-images.githubusercontent.com/64618065/198894204-e7ee36dc-6652-4ba4-b476-fa5f4ff72090.jpg" alt="drawing" width="150"/>
+      <img src="https://user-images.githubusercontent.com/64618065/198978861-b189f5d1-9e7d-42f6-88ec-7fc3436d1ae2.jpg" alt="drawing" width="150"/>
     </td>
     <td>
-      <img src="https://user-images.githubusercontent.com/64618065/198894500-047442aa-b9c5-426c-8c25-ce4dfac18fc9.jpg" alt="drawing" width="150"/>
+      <img src="https://user-images.githubusercontent.com/64618065/198978919-4dde1fa1-c3d8-490d-b2dd-ef941319e534.jpg" alt="drawing" width="150"/>
     </td>
     <td>
-      <img src="https://user-images.githubusercontent.com/64618065/198894287-279863ce-3a72-4bfe-a581-1637277d8074.jpg" alt="drawing" width="150"/>
+      <img src="https://user-images.githubusercontent.com/64618065/198978979-a3769077-9dd0-4ca7-a955-c598951d4633.jpg" alt="drawing" width="150"/>
     </td>
   </tr>
 </table>
