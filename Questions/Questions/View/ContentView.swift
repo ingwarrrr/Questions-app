@@ -21,9 +21,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack() {
+                
+                Spacer()
+                
                 VStack(spacing: 30) {
-                    Spacer()
-                    
                     Text("Questions game")
                         .lightBlueTitle()
                         .padding()
@@ -33,7 +34,7 @@ struct ContentView: View {
                     
                     Text("Вы готовы испытать свои знания?")
                         .foregroundColor(.accentColor)
-                        .font(.title2)
+                        .font(.title3)
                         .bold()
                     
                     VStack(alignment: .leading) {
@@ -48,10 +49,10 @@ struct ContentView: View {
                         .pickerStyle(SegmentedPickerStyle())
                         .foregroundColor(.accentColor)
                     }
-                    .padding(40)
-                    
-                    Spacer()
+                    .padding(.horizontal, 40)
                 }
+                
+                Spacer()
                 
                 NavigationLink {
                     TriviaView()
@@ -63,10 +64,11 @@ struct ContentView: View {
                     MainButton(text: "Вперед!")
 
                 }
-                .padding(60)
+                .padding(40)
+                
             }
+            .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .edgesIgnoringSafeArea(.all)
             .background(Color(red: 0.5, green: 0.5, blue: 1))
         }
     }
