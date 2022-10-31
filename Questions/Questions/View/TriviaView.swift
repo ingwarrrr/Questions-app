@@ -11,7 +11,7 @@ struct TriviaView: View {
     @EnvironmentObject var trivialManager: TriviaManager
 
     var body: some View {
-        if !trivialManager.reachedEnd {
+        if trivialManager.reachedEnd {
             VStack {
                 Spacer()
 
