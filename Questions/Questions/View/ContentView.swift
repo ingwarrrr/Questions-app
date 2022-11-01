@@ -59,6 +59,11 @@ struct ContentView: View {
                         .task {
                             await trivialManager.fetchTrivial()
                         }
+                        .alert(isPresented: $trivialManager.hasError, error: trivialManager.error) {
+                            Button(action: {}) {
+                                Text("Печально")
+                            }
+                        }
                         .environmentObject(trivialManager)
                 } label: {
                     MainButton(text: "Вперед!")
