@@ -21,7 +21,7 @@
 <table>
   <tr>
     <td>
-      <img src="https://user-images.githubusercontent.com/64618065/198978782-b6f6289f-7168-4b8a-ad22-68de943a6528.jpg" alt="drawing" width="150"/>
+      <img src="https://user-images.githubusercontent.com/64618065/198982003-a6bae11d-5a11-4b1a-a081-e1a5e9dac5a9.jpg" alt="drawing" width="150"/>
     </td>
     <td>
       <img src="https://user-images.githubusercontent.com/64618065/198978861-b189f5d1-9e7d-42f6-88ec-7fc3436d1ae2.jpg" alt="drawing" width="150"/>
