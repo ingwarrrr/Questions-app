@@ -19,20 +19,33 @@ class TriviaManager: ObservableObject {
     @Published private(set) var progress: CGFloat = 0.00
     @Published private(set) var score = 0
     @Published var amount = "10"
+    @Published var hasError = false
+    @Published var error: DataError?
     
     func fetchTrivial() async {
-        guard let url = URL(string: "https://opentdb.com/api.php?amount=\(amount)") else { fatalError("Ошибка Url") }
+        hasError = false
+        
+        guard let url = URL(string: "https://opentdb.com/api.php?amount=\(amount)") else {
+            self.hasError = true
+            self.error = DataError.invalidURL
+            return
+        }
         
         let urlRequest = URLRequest(url: url)
         
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
             
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Ошибка при получении данных") }
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                self.hasError = true
+                self.error = DataError.invalidStatusCode
+                return
+            }
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode(Trivia.self, from: data)
+            
             
             DispatchQueue.main.async {
                 self.index = 0
@@ -44,7 +57,9 @@ class TriviaManager: ObservableObject {
                 self.setQuestion()
             }
         } catch {
-            print("Ошибка получения trivia: \(error.localizedDescription)")
+            self.hasError = true
+            self.error = DataError.failedToDecode
+            return
         }
     }
     
@@ -72,6 +87,30 @@ class TriviaManager: ObservableObject {
         answerSelected = true
         if answer.isCorrect {
             score += 1
+        }
+    }
+}
+
+// MARK: - DataError
+
+extension TriviaManager {
+    enum DataError: LocalizedError {
+        case custom(error: Error)
+        case failedToDecode
+        case invalidStatusCode
+        case invalidURL
+        
+        var errorDescription: String? {
+            switch self {
+            case .failedToDecode:
+                return "Ошибка декодирования"
+            case .custom(let error):
+                return error.localizedDescription
+            case .invalidStatusCode:
+                return "Запрос не вернул валидный статус код"
+            case .invalidURL:
+                return "Ошибка URL"
+            }
         }
     }
 }
